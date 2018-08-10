@@ -52,6 +52,40 @@ self.window?.rootViewController = SplashViewController.factoryController();
 self.window?.makeKeyAndVisible()
 ```
 
+# Crear archivo de Constante:
+```swift
+class Constant: NSObject {
+    static let BASE_URL = "http://test.mobileia.com/api/";
+    
+    static let MOBILEIA_LAB_APP_ID = 11523;
+    
+    static let IS_TESTING = false;
+}
+```
+
+# Integrar MobileIA Authentication
+1. pod 'MobileiaAuthenticationCore'
+2. En AppDelegate:
+```swift
+import MobileiaCore
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Inicializar MobileIA
+        Mobileia.getInstance().appId = Constant.MOBILEIA_LAB_APP_ID;
+        
+        // Override point for customization after application launch.
+        return true
+    }
+
+```
+
+
 # Incluir Firebase
 1. pod 'Firebase/Core'
 2. en AppDelegate:
@@ -84,3 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 8. Ejecutar: pod lib lint
 9. Crear cuenta: pod trunk register <Your Email> (Solo una vez)
 10. Publicar Pod: pod trunk push TuProyecto.podspec
+
+
+# Librerias utiles
+https://github.com/codestergit/SweetAlert-iOS
